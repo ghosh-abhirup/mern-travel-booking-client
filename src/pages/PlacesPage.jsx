@@ -1,8 +1,17 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AccountNav from '../components/AccountNav';
 
 const PlacesPage = () => {
+  const [places,setPlaces] = useState([]);
+
+  useEffect(()=>{
+    axios.get('/places').then(({data})=>{
+      // console.log(data[0].title);
+      setPlaces(data);
+    })
+  },[])
 
   return (
     
@@ -15,6 +24,20 @@ const PlacesPage = () => {
           </svg>
           Add new place
         </Link>
+      </div>
+      <div className='mt-4 flex flex-col gap-2'>
+        {places.length>0 && places.map(place => (
+          <Link to={'/account/places/'+ place._id} key={place._id} className='flex justify-between gap-4 bg-gray-200 p-4 rounded-2xl '>
+              <img className='w-1/4 rounded-2xl p-2' src={'http://127.0.0.1:8000/uploads/'+place.photos[0]} alt="photo" />            
+            <div className='flex flex-col gap-2 w-3/4 p-2'>
+              <p className='font-semibold text-2xl'>{place.title}</p>
+              <p className='font-semibold text-sm cursor-pointer'>{place.address}</p>
+              <p className='font-semibold '>{place.desc}</p>
+              <p><span className='font-semibold'>Check In Time: </span>{place.checkIn+':00'}</p>
+              <p><span className='font-semibold'>Check Out Time: </span>{place.checkOut+':00'}</p>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   )
