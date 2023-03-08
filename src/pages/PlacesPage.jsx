@@ -32,9 +32,12 @@ const PlacesPage = () => {
             <div className='flex flex-col gap-2 w-3/4 p-2'>
               <p className='font-semibold text-2xl'>{place.title}</p>
               <p className='font-semibold text-sm cursor-pointer'>{place.address}</p>
-              <p className='font-semibold '>{place.desc}</p>
-              <p><span className='font-semibold'>Check In Time: </span>{place.checkIn+':00'}</p>
-              <p><span className='font-semibold'>Check Out Time: </span>{place.checkOut+':00'}</p>
+              <p className='font-semibold '>{place.desc.substring(0,300)+'...'}</p>
+              <div className='flex gap-10'>
+                <p><span className='font-semibold'>Check In Time: </span>{place.checkIn+':00'}</p>
+                <p><span className='font-semibold'>Check Out Time: </span>{place.checkOut+':00'}</p>
+              </div>
+              <p><span className='font-semibold mr-2'>{'$'+place.price}</span>per night</p>
             </div>
           </Link>
         ))}

@@ -20,6 +20,7 @@ const PlacesFormPage = () => {
   const [guest, setGuest] = useState(1);
   const [extraInfo, setExtraInfo] = useState('');
   const [redirect, setRedirect] = useState(false); 
+  const [price, setPrice] = useState('');
 
   useEffect(()=>{
     if(!id){
@@ -37,6 +38,7 @@ const PlacesFormPage = () => {
         setCheckOut(data.checkOut);
         setGuest(data.maxGuest);
         setExtraInfo(data.extraInfo);
+        setPrice(data.price);
       })
     }
   },[])
@@ -71,12 +73,12 @@ const PlacesFormPage = () => {
 
     if(!id){
       // new place
-      const place = {title, address, addedPhoto, desc, perks, checkIn, checkOut, guest,extraInfo};
+      const place = {title, address, addedPhoto, desc, perks, checkIn, checkOut, guest,extraInfo, price};
 
       await axios.post('/places', place);
     } else{
       // update place
-      const place = {id, title, address, addedPhoto, desc, perks, checkIn, checkOut, guest,extraInfo};
+      const place = {id, title, address, addedPhoto, desc, perks, checkIn, checkOut, guest,extraInfo, price};
 
       await axios.put('/places', place);
     }
@@ -166,6 +168,9 @@ const PlacesFormPage = () => {
                 <input type="number" placeholder='Ex. 2' value={guest} onChange={e=>setGuest(e.target.value)}/>
               </div>
             </div>
+            <h2 className='font-medium mt-2 text-lg'>Price per night</h2>
+            <h2 className='font-medium mt-2 text-sm text-gray-500 leading-2'>in dollars ($)</h2>
+            <input type="number" name="price" id="price" placeholder='$1000' value={price} onChange={e=>setPrice(e.target.value)}/>
             <h2 className='font-medium mt-4 text-lg'>Extra Information</h2>
             <textarea rows={5} className='' placeholder='House rules, prohibitions etc.' value={extraInfo} onChange={e=>setExtraInfo(e.target.value)}/>
 
