@@ -40,7 +40,7 @@ Close photos
                     </div>
                     {travelSite.photos.length>0 && travelSite.photos.map((photo)=>(
                         <div key={photo}>
-                            <img src={'http://127.0.0.1:8000/uploads/'+photo} alt="photo" className='w-4/5 object-cover mx-auto'/>
+                            <img src={'https://travel-booking-api.onrender.com/uploads/'+photo} alt="photo" className='w-4/5 object-cover mx-auto'/>
                         </div>
                     ))}
                 </div>
@@ -57,12 +57,12 @@ Close photos
             <div className='relative'>
                 <div className="grid gap-2 grid-cols-[2fr_1fr] rounded-3xl overflow-hidden">
                     <div>
-                        <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover cursor-pointer' src={'http://127.0.0.1:8000/uploads/'+travelSite.photos[0]} alt="" />
+                        <img onClick={()=>setShowAllPhotos(true)} className='aspect-square object-cover cursor-pointer' src={'https://travel-booking-api.onrender.com/uploads/'+travelSite.photos[0]} alt="" />
                     </div>
                     <div className='grid'>
-                        <img onClick={()=>setShowAllPhotos(true)} src={'http://127.0.0.1:8000/uploads/'+travelSite.photos[1]} className='aspect-square object-cover cursor-pointer' alt="" />
+                        <img onClick={()=>setShowAllPhotos(true)} src={'https://travel-booking-api.onrender.com/uploads/'+travelSite.photos[1]} className='aspect-square object-cover cursor-pointer' alt="" />
                         <div className='overflow-hidden'>
-                            <img onClick={()=>setShowAllPhotos(true)} src={'http://127.0.0.1:8000/uploads/'+travelSite.photos[2]} className='aspect-square object-cover relative top-2 cursor-pointer' alt="" />
+                            <img onClick={()=>setShowAllPhotos(true)} src={'https://travel-booking-api.onrender.com/uploads/'+travelSite.photos[2]} className='aspect-square object-cover relative top-2 cursor-pointer' alt="" />
                         </div>
                     </div>
                 </div>

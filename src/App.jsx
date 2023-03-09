@@ -12,7 +12,7 @@ import PlacesFormPage from './pages/PlacesFormPage'
 import TravelPlacePage from './pages/TravelPlacePage'
 import BookingsPage from './pages/BookingsPage'
 
-axios.defaults.baseURL = "http://127.0.0.1:8000";
+axios.defaults.baseURL = "https://travel-booking-api.onrender.com";
 axios.defaults.withCredentials = true;
 
 function App() {

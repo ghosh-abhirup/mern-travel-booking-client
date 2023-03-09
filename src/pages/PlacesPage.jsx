@@ -28,7 +28,7 @@ const PlacesPage = () => {
       <div className='mt-4 flex flex-col gap-2'>
         {places.length>0 && places.map(place => (
           <Link to={'/account/places/'+ place._id} key={place._id} className='flex justify-between gap-4 bg-gray-200 p-4 rounded-2xl '>
-              <img className='w-1/4 rounded-2xl p-2' src={'http://127.0.0.1:8000/uploads/'+place.photos[0]} alt="photo" />            
+              <img className='w-1/4 rounded-2xl p-2' src={'https://travel-booking-api.onrender.com/uploads/'+place.photos[0]} alt="photo" />            
             <div className='flex flex-col gap-2 w-3/4 p-2'>
               <p className='font-semibold text-2xl'>{place.title}</p>
               <p className='font-semibold text-sm cursor-pointer'>{place.address}</p>
