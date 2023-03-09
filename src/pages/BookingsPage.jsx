@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import AccountNav from '../components/AccountNav';
 import { UserContext } from '../context/UserContext';
-import { Link } from 'react-router-dom';
 
 const BookingsPage = () => {
     const [bookingData, setBookingData] = useState([]);
@@ -22,7 +21,7 @@ const BookingsPage = () => {
             })
                 
         }
-    },[bookingData])
+    },[user])
 
     const dateFormatFunc = (date)=>{
         let str = date.toString();
@@ -37,14 +36,21 @@ const BookingsPage = () => {
         setBookingData(bookingData.filter(el => el._id !== id));
     }
 
+    if(!user){
+        return (
+            <>
+            <AccountNav />
+            <h1 className='text-center font-semibold text-lg'>Loading ...</h1>
+            </>
+        );
+    }
+
   return (
     <>
         <AccountNav />
-        
-        
 
         <div>
-            {bookingData.length >0 && bookingData.map((booking)=>{
+            {user && bookingData.length >0 && bookingData.map((booking)=>{
                     const visitData = travelPlaces.filter(el => el._id === booking.placeId);
                     // console.log(visitData)
                     return (
@@ -95,7 +101,7 @@ Cancel booking
                 })
             }
         </div>
-        {bookingData.length ===0 && (
+        {user && bookingData.length ===0 && (
             <h1 className='text-center font-semibold text-lg'>You have no upcoming bookings</h1>
         )}
     </>
