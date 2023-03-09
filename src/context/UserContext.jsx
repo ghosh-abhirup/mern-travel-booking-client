@@ -6,6 +6,7 @@ export const UserContext = createContext({});
 export const UserContextProvider = ({children})=>{
     const [user,setUser] = useState(null);
     const [ready, setReady] = useState(false);
+    const [travelPlaces, setTravelPlaces] = useState([]);
 
     useEffect(()=>{
         axios.get("/profile")
@@ -13,10 +14,16 @@ export const UserContextProvider = ({children})=>{
                 setUser(data);
                 setReady(true);
             })
+
+        axios.get('/all-places').then(response=>{
+            const {data} = response;
+            // console.log(data);
+            setTravelPlaces(data);
+          })
     }, [])
 
     return (
-        <UserContext.Provider value={{user, setUser, ready}}>
+        <UserContext.Provider value={{user, setUser, ready, travelPlaces, setTravelPlaces}}>
             {children}
         </UserContext.Provider>
     );

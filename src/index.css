@@ -5,7 +5,8 @@
 *{
     @apply font-poppins;
 }
-input[type="text"], input[type="email"], input[type="password"], input[type="number"], textarea{
+input[type="text"], input[type="email"], input[type="password"], input[type="number"],
+input[type="tel"], textarea{
     @apply w-full border my-2 py-2 px-4 rounded-2xl;
 }
 
